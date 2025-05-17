@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Rides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+          margin: 0;
+          overflow: hidden;
+          background-color: #12182B;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-height: 100vh;
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          padding: 20px 0;
+          z-index: 20;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .logo-container-header {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo-header {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 10px;
+          background-color: #64CCC5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          font-weight: bold;
+          color: #12182B;
+        }
+
+        .logo-text {
+          color: #E0F2F7;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 22px;
+        }
+
+        nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+        }
+
+        nav li {
+          margin-left: 25px;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: #B2EBF2;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 17px;
+          opacity: 0.9;
+          transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+          color: #FFFFFF;
+        }
+
+        canvas {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1;
+        }
+
+        .rides-container {
+          padding: 80px 20px 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: calc(100vh - 80px);
+          width: 100%;
+        }
+
+        .popup-layout-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 30px;
+          max-width: 1100px;
+          width: 95%;
+        }
+
+        .section-title {
+          color: #FFD700;
+          font-size: 32px;
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: 30px;
+          width: 100%;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-pair-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          gap: 30px;
+          width: 100%;
+        }
+
+        .image-left-top,
+        .image-left-bottom {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 48%;
+        }
+
+        .text-middle-top {
+          display: none;
+        }
+
+        .image-right-top {
+          display: none;
+        }
+
+        .text-middle-bottom {
+          display: none;
+        }
+
+        .image-right-bottom {
+          display: none;
+        }
+
+        .image-bottom-full {
+          display: none;
+        }
+
+        .image-bottom-full img {
+          max-width: 70%;
+          height: auto;
+          border-radius: 12px;
+          margin-bottom: 10px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .image-pair-container img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 12px;
+          margin-bottom: 10px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .image-pair-container img:hover {
+          transform: scale(1.05);
+        }
+
+        .image-pair-container p {
+          font-size: 1em;
+          color: #D1C4E9;
+          text-align: center;
+          margin-top: 10px;
+          line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+          .header {
+            padding: 15px 0;
+          }
+          .logo-text {
+            font-size: 20px;
+          }
+          nav ul li {
+            margin-left: 15px;
+          }
+          nav ul li a {
+            font-size: 16px;
+          }
+          .popup-layout-container {
+            gap: 20px;
+          }
+          .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+          }
+          .image-pair-container {
+            flex-direction: column;
+            gap: 20px;
+          }
+          .image-left-top,
+          .image-left-bottom {
+            width: 90%;
+          }
+          .popup-layout-container img{
+            max-width: 100%;
+          }
+          .image-pair-container p {
+            font-size: 0.95em;
+          }
+          .swipe-button, .previous-button {
+            font-size: 0.9em;
+            padding: 8px 16px;
+            border-radius: 20px;
+            bottom: 15px;
+          }
+          .swipe-icon, .previous-icon {
+            width: 20px;
+            height: 20px;
+          }
+          .swipe-button {
+            right: calc(15px + 100px);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .logo-text {
+            font-size: 18px;
+          }
+          nav ul li {
+            margin-left: 10px;
+          }
+          nav ul li a {
+            font-size: 14px;
+          }
+          .popup-layout-container p{
+            font-size: 0.9em;
+          }
+          .image-left-top,
+          .image-left-bottom {
+            width: 95%;
+          }
+          .popup-layout-container img {
+            max-width: 100%;
+          }
+          .section-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+          }
+          .swipe-button, .previous-button {
+            font-size: 0.8em;
+            padding: 6px 12px;
+            border-radius: 18px;
+            bottom: 10px;
+          }
+          .swipe-icon, .previous-icon {
+            width: 18px;
+            height: 18px;
+          }
+          .swipe-button {
+            right: calc(10px + 90px);
+          }
+        }
+
+        .swipe-button {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          background-color: #FFD700;
+          color: #12182B;
+          padding: 12px 24px;
+          border-radius: 30px;
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+          z-index: 10;
+          font-weight: 600;
+        }
+
+        .swipe-button:hover {
+          transform: translateX(5px);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes swipe {
+          0% { transform: translateX(0); }
+          25% { transform: translateX(8px); }
+          50% { transform: translateX(0); }
+          75% { transform: translateX(-8px); }
+          100% { transform: translateX(0); }
+        }
+
+        .swipe-icon {
+          width: 26px;
+          height: 26px;
+          animation: swipe 1s infinite;
+          fill: #12182B;
+        }
+
+        .previous-button {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background-color: #64CCC5;
+          color: #12182B;
+          padding: 12px 24px;
+          border-radius: 30px;
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+          z-index: 10;
+          font-weight: 600;
+        }
+
+        .previous-button:hover {
+          transform: translateX(-5px);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .previous-icon {
+          width: 26px;
+          height: 26px;
+          fill: #12182B;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container-header">
+            <div class="logo-header"></div>
+            <span class="logo-text">India - Top Rides</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="toprides.html">Top Rides</a></li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="rides-container">
+        <div class="popup-layout-container">
+            <h2 class="section-title">Asokas Wonderland</h2>
+            <div class="image-pair-container">
+                <div class="image-left-top">
+                    <img src="unnamed.png" alt="Ashoka's Wheel Ride" onclick="window.location.href='aboutrides/aarush.html'">                    <p>Experience the grandeur of Ashoka's reign on this majestic Ferris wheel, adorned with the symbols of his empire. A gentle ride offering panoramic views.</p>
+                </div>
+                <div class="image-left-bottom">
+                    <img src="Gemini_Generated_Image_tcqxaftcqxaftcqx (1).png" alt="India Attraction">
+                    <p>Explore the Heart of India: A Journey Through Its Rich Heritage and Vibrant Culture</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <a href="toprides2.html"> <button class="swipe-button" style="right: calc(30px + 120px);"> <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/arrow-right.svg" alt="Swipe Right" class="swipe-icon">
+            Next Page
+        </button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-content {
+            background-color: #111;
+            margin: 5% auto; /* Adjusted margin */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 800px; /* Increased max width */
+            position: relative;
+            animation: slide-fade-in 0.4s ease-out;
+            color: #0f0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-y: auto; /* Added vertical scroll for longer content */
+            max-height: 80vh; /* Limit max height */
+        }
+
+        @keyframes slide-fade-in {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes matrix-text {
+            0% { text-shadow: none; }
+            25% { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; }
+            50% { text-shadow: none; }
+            75% { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; }
+            100% { text-shadow: none; }
+        }
+
+        .loading-text {
+            animation: matrix-text 1s infinite alternate;
+        }
+
+        .close-button {
+            color: #666;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 36px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #f00;
+            opacity: 1;
+        }
+
+        .slideshow-container {
+            position: relative;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            animation: fade-scale 0.6s ease-in-out;
+        }
+
+        @keyframes fade-scale {
+            from { opacity: 0.7; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: inherit;
+        }
+
+        .text {
+            color: #eee;
+            font-size: 1.1em;
+            padding: 18px 25px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: left;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 70%, transparent 100%);
+            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: inherit;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 18px;
+            margin-top: -30px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            border-radius: 4px;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0.7;
+        }
+
+        .next {
+            right: 10px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .prev {
+            left: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            opacity: 1;
+        }
+
+        .dot-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 14px;
+            width: 14px;
+            margin: 0 8px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.6;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+            opacity: 1;
+        }
+
+        .info-container {
+            margin-top: 25px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .info-list {
+            padding-left: 25px;
+            margin-top: 12px;
+            list-style-type: disc;
+            color: #555;
+        }
+
+        .info-list li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="logo-container-header">
+            <img src="logo.png" alt="CROS Logo" class="logo-header">
+            <span class="logo-text">India</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="toprides.html">Top Rides</a></li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+    <canvas id="starCanvas"></canvas>
+  <img src="logo.png" class="about">
+    </div>
+
+    <div id="infoPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="https://th-thumbnailer.cdn-si-edu.com/iKk5XiK6Ta6TSnpoA3jWc_Jelro=/1026x684/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/b6/30/b630b48b-7344-4661-9264-186b70531bdc/istock-478831658.jpg" style="width:100%" alt="Taj Mahal">
+                    <div class="text">The Majestic Taj Mahal</div>
+                </div>
+
+                <div class="slide fade">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Pollock_to_Hussey.jpg/1200px-Pollock_to_Hussey.jpg" style="width:100%" alt="Cricket Match">
+                    <div class="text">The Passion of Cricket in India</div>
+                </div>
+
+                <div class="slide fade">
+                    <img src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_auto,w_750/f_auto/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS" style="width:100%" alt="Indian Cuisine">
+                    <div class="text">A Culinary Journey Through India</div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+
+            <div id="infoContainer" class="info-container">
+                <p class="loading-text">Loading Info...</p>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="showPopup()" class="rectangle">Click me for some info on india!</button>
+
+    <script>
+        let slideIndex = 1;
+        let infoLoaded = false;
+
+        function showSlides(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            if (dots.length > 0) {
+                dots[slideIndex-1].className += " active";
+            }
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function loadInfo() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    document.getElementById("infoContainer").innerHTML = `
+                       
+                    `;
+                    infoLoaded = true;
+                    resolve();
+                }, 1500);
+            });
+        }
+
+        async function showPopup() {
+            document.getElementById("infoPopup").style.display = "block";
+            showSlides(slideIndex);
+            if (!infoLoaded) {
+                await loadInfo();
+            }
+            document.getElementById("infoContainer").classList.remove("loading-text");
+        }
+
+        const closeButton = document.querySelector(".close-button");
+        closeButton.addEventListener('click', function() {
+            document.getElementById("infoPopup").style.display = "none";
+        });
+
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById("infoPopup");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+    <script src="index.js"></script>
+</body>
+</html>

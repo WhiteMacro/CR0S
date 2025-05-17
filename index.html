@@ -1,0 +1,49 @@
+<!DOCTYPE html> !
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <header class="header">
+        <div class="logo-container-header">
+            <img src="logo.png" alt="CROS Logo" class="logo-header"> 
+            <span class="logo-text">India</span>
+            
+        </div>
+       
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="toprides.html">Top Rides</a></li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+    <canvas id="starCanvas"></canvas>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('popup');
+            const closeButton = document.querySelector('.close-button');
+
+            popup.style.display = 'flex';
+
+            closeButton.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+
+            popup.addEventListener('click', function(event) {
+                if (event.target === popup) {
+                    popup.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>

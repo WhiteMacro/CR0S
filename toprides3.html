@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Rides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #12182B;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #1F2937;
+        }
+
+        .logo-container-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-header {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #007bff;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            opacity: 1;
+        }
+
+        .rides-container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+        }
+
+        .popup-layout-container {
+            display: flex; /* Changed to flexbox */
+            flex-direction: column; /* Stack items vertically initially */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+            gap: 20px; /* Space between items */
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .section-title {
+            color: #f59e0b;
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%; /* Ensure it spans the full width */
+        }
+
+        .image-pair-container {
+            display: flex;
+            flex-direction: row; /* Horizontal layout for images */
+            justify-content: center; /* Center images horizontally */
+            align-items: center; /* Center images vertically */
+            gap: 20px; /* Space between images */
+            width: 100%; /* Ensure it takes the full width */
+        }
+
+        .image-left-top,
+        .image-left-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%; /* Adjust as needed for spacing */
+        }
+
+        .text-middle-top {
+            display: none; /* Hide this element */
+        }
+
+        .image-right-top {
+            display: none; /* Hide this element */
+        }
+
+        .text-middle-bottom {
+            display: none; /* Hide this element */
+        }
+
+        .image-right-bottom {
+            display: none; /* Hide this element */
+        }
+
+        .image-bottom-full {
+            display: none;
+        }
+
+        .image-bottom-full img {
+            max-width: 60%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-pair-container img {
+            max-width: 100%; /* Make images fill their container */
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-pair-container img:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-pair-container p {
+            font-size: 0.9em;
+            color: #ddd;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .popup-layout-container {
+                flex-direction: column; /* Stack items on smaller screens */
+            }
+            .image-pair-container {
+                flex-direction: column; /* Stack images on smaller screens */
+            }
+            .image-left-top,
+            .image-left-bottom {
+                width: 80%;
+            }
+            .popup-layout-container img{
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 20px;
+            }
+            nav ul li a {
+                font-size: 14px;
+            }
+            .popup-layout-container p{
+                font-size: 0.9em;
+            }
+            .image-left-top,
+            .image-left-bottom {
+                width: 95%;
+            }
+            .popup-layout-container img {
+                max-width: 100%;
+            }
+        }
+
+        .swipe-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f59e0b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .swipe-button:hover {
+            transform: translateX(5px);
+        }
+
+        @keyframes swipe {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(5px); }
+            50% { transform: translateX(0); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .swipe-icon {
+            width: 24px;
+            height: 24px;
+            animation: swipe 1s infinite;
+        }
+
+        .previous-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .previous-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .previous-icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container-header">
+            <div class="logo-header"></div>
+            <span class="logo-text">India - Top Rides</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="toprides.html">Top Rides</a></li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="rides-container">
+        <div class="popup-layout-container">
+            <h2 class="section-title">Asokas Wonderland</h2>
+            <div class="image-pair-container">
+                <div class="image-left-top">
+                    <img src="unnamed.png" alt="Ashoka's Wheel Ride">
+                    <p>Experience the grandeur of Ashoka's reign on this majestic Ferris wheel, adorned with the symbols of his empire. A gentle ride offering panoramic views.</p>
+                </div>
+                <div class="image-left-bottom">
+                    <img src="Gemini_Generated_Image_tcqxaftcqxaftcqx (1).png" alt="India Attraction">
+                    <p>Explore the Heart of India: A Journey Through Its Rich Heritage and Vibrant Culture</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <a href="toprides2.html">
+        <button class="previous-button">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/arrow-left.svg" alt="Swipe Left" class="previous-icon">
+            Previous Page
+        </button>
+    </a>
+
+</body>
+</html>
