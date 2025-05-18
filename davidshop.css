@@ -1,0 +1,124 @@
+/* davidshop.css */
+
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.timeline-section {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #ccc;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    padding: 1em 0;
+}
+
+.timeline-content {
+    position: relative;
+    width: 45%;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    left: 0;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -10px;
+    border-left: 10px solid #fff;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    left: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -10px;
+    border-right: 10px solid #fff;
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.timeline-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Animation */
+.timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item .timeline-content {
+        width: 90%;
+        margin-left: 40px !important;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        left: 0;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        border: none;
+    }
+}

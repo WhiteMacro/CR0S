@@ -3,9 +3,10 @@ body {
   overflow: hidden;
   background-color: #12182B;
   display: flex;
-  flex-direction: column; /* Arrange header and wrapper vertically */
-  align-items: center;    /* Center horizontally */
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
+  padding-top: 3in;
 }
 
 .header {
@@ -169,3 +170,9 @@ canvas {
   50% { border-color: #FFA07A; }
 }
 
+.MahaRaja {
+  color: #FFA07A;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}

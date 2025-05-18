@@ -1,8 +1,8 @@
 .popup-layout-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
-    grid-template-rows: auto auto;    /* Two rows, adjust 'auto' as needed */
-    gap: 10px; /* Spacing between grid items */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;    
+    gap: 10px; 
 }
 
 .image-left-top {
