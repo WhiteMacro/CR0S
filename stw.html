@@ -135,15 +135,12 @@
             setTimeout(() => {
                 spinning = false;
                 const degree = Math.abs(value1 % 360);
-                alert("degree : "+ degree);
                 let finalNumber = getFinalNumber(degree);
-                alert("In timeout : "+ finalNumber);
                 showPopup(finalNumber);
             }, 5000);
         };
 
         function getFinalNumber(degree) {
-            alert("In Degree : "+ degree)
             if ((degree >= 0 && degree < 45) || (degree >= 315 && degree < 360)) return "G";
             if (degree >= 45 && degree < 90) return "R";
             if (degree >= 90 && degree < 135) return "A";
@@ -155,7 +152,7 @@
         }
 
         function showPopup(number) {
-            alert("Hi - " + number);
+
             if (number === 'G') {
                 alert("You landed on G!");
             } else if (number === 'R') {

@@ -1,0 +1,154 @@
+<style>
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      padding: 20px 0;
+      z-index: 20;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo-container-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-header {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #64CCC5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #12182B;
+    }
+
+    .logo-text {
+      color: #KKKBF2;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    nav li {
+      margin-left: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #KKKBF2;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      opacity: 0.9;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FFFFFF;
+    }
+
+ 
+ 
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="AarushMuseum.css"></link>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container-header">
+            <div class="logo-header"></div>
+            <span class="logo-text">India - Top Rides</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="toprides.html">Top Rides</a></li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="timeline" class="timeline-section">
+        <h2 class="section-title">Welcome To the MYSTIC Museum</h2>
+        <h2 class="section-title">Lets Tour the Artificats used by King Ashoka</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Bankong</h3>
+                    <p>Golden bhudda </p>
+                    <img src="BhuddasMuseum/bankong.jpeg" alt="Jewelry" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Art</h3>
+                    <p>created to represent Bhudda</p>
+                    <img src="BhuddasMuseum/bhudda1.jpeg" alt="Scrolls" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Bhudda's</h3>
+                    <p>old sculpte=ure</p>
+                    <img src="BhuddasMuseum/bhudds old.jpg" alt="Clothing" class="timeline-image">
+                </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>for sale</h3>
+                    <p>Sculpture</p>
+                    <img src="BhuddasMuseum/download (5).jpeg" alt="Clothing" class="timeline-image">
+                </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>music peace</h3>
+                    <p>tool used to create white noise for peace</p>
+                    <img src="BhuddasMuseum/music.jpg" alt="Clothing" class="timeline-image">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <script>
+        // Timeline animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

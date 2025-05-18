@@ -1,3 +1,87 @@
+<style>
+
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      padding: 20px 0;
+      z-index: 20;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo-container-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-header {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #64CCC5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #12182B;
+    }
+
+    .logo-text {
+      color: #KKKBF2;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    nav li {
+      margin-left: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #KKKBF2;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      opacity: 0.9;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FFFFFF;
+    }
+
+ 
+ 
+</style>
+
+<header class="header">
+    <div class="logo-container-header">
+        <div class="logo-header"></div>
+        <span class="logo-text">India - Top Rides</span>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="toprides.html">Top Rides</a></li>
+            <li><a href="#">Tickets</a></li>
+        </ul>
+    </nav>
+</header>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +91,7 @@
     <link rel="stylesheet" href="davidshop.css"></link>
 </head>
 <body>
+
     <section id="timeline" class="timeline-section">
         <h2 class="section-title">We sell</h2>
         <div class="timeline">
@@ -15,6 +100,7 @@
                     <h3>Jewelry</h3>
                     <p>Finely crafted adornments made from precious metals and gemstones.</p>
                     <img src="https://static01.nyt.com/images/2020/11/17/multimedia/17sp-indiajewelry-inyt7/17sp-indiajewelry-inyt7-superJumbo.jpg" alt="Jewelry" class="timeline-image">
+                    <p>$2000</p>
                 </div>
             </div>
             <div class="timeline-item">
@@ -22,6 +108,7 @@
                     <h3>Scrolls</h3>
                     <p>Ancient documents written on parchment or papyrus.</p>
                     <img src="https://m.media-amazon.com/images/I/61iLJuJOZXL._AC_UF894,1000_QL80_.jpg" alt="Scrolls" class="timeline-image">
+                    <p>$45/p>
                 </div>
             </div>
             <div class="timeline-item">
@@ -29,18 +116,21 @@
                     <h3>Clothing</h3>
                     <p>Garments and attire from various historical periods.</p>
                     <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcScnM03m2wxHr1EY_GeBwFx5OVGR14PxPRfw4igURgU7K6408W-1mzTlQZBra5QhKKRhb8Jb9Cu7LP09pO-t10pBWw6xgEfQmx5GUGIvs0CtQCh_k16qsTG8g" alt="Clothing" class="timeline-image">
+                    <p>$198</p>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Swords</h3>
                         <p>Don't worry they're not real!.</p>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Szabla_Tarwar_%28Indie%29_-_Muzeum_Azji_i_Pacyfiku.jpg/500px-Szabla_Tarwar_%28Indie%29_-_Muzeum_Azji_i_Pacyfiku.jpg" alt="Clothing" class="timeline-image">
+                        <p>$20</p>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <h3>Books</h3>
                             <p>Religious, and factual books written by some famous writters such as Rabindranath Tagore.</p>
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwwH0r5L4j79LyHDqfL_sNsKVMhxzhFu4G8g&s" alt="Clothing" class="timeline-image">
+                            <p>$47</p>
                         </div>
                 
             </div>
