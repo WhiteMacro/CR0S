@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dr.css">
+    <style>
+        .parrot-container {
+            position: absolute; /* Changed to absolute for positioning relative to the viewport */
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            z-index: 10; /* Ensure it's above other elements if needed */
+        }
+
+        .parrot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.animatedimages.org/data/media/591/animated-parrot-image-0128.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: fly 1s infinite steps(12);
+        }
+
+      .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          padding: 20px 0;
+          z-index: 20;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .logo-container-header {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo-header {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 10px;
+          background-color: #64CCC5;
+          display: left;
+          justify-content: left;
+          align-items: left;
+          font-size: 18px;
+          font-weight: bold;
+          color: #12182B;
+        }
+
+        .logo-text {
+          color: #E0F2F7;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 22px;
+        }
+
+        nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+        }
+
+        nav li {
+          margin-left: 25px;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: #B2EBF2;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 17px;
+          opacity: 0.9;
+          transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+          color: #FFFFFF;
+        }
+
+        canvas {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1;
+        }
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            z-index: -1; /* Place it behind other content */
+        }
+
+        .logo {
+            /* Adjust positioning as needed */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: sans-serif; /* Or your preferred font */
+            width: 100px;
+            height: 100px;
+            color: #12182B;
+        }
+
+        .logo1 {
+            /* Basic styling for the buttons */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: sans-serif; /* Or your preferred font */
+            font-size: 16px;
+        }
+
+        .geography-button-container {
+            position: absolute;
+            top: 230px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            z-index: 10; /* Ensure it's above other elements */
+            width: 50px;
+            height: 50px;
+        }  
+        .religion-button-container {
+            position: absolute;
+            top: 320px; /* Adjust top position as needed */
+            left: 200px; /* Adjust left position as needed */
+            z-index: 10; /* Ensure it's above other elements */
+            width: 50px;
+            height: 50px;
+        }
+        .achievements-button-container {
+            position: absolute;
+            top: 550px; /* Adjust top position as needed */
+            left: 500px; /* Adjust left position as needed */
+            z-index: 10; /* Ensure it's above other elements */
+        }
+        .Politics-button-container {
+            position: absolute;
+            top: 600px; /* Adjust top position as needed */
+            left: 800px; /* Adjust left position as needed */
+            z-index: 10; /* Ensure it's above other elements */
+        }
+        .Ecnomic-button-container {
+            position: absolute;
+            top: 500px; /* Adjust top position as needed */
+            left: 1000px; /* Adjust left position as needed */
+            z-index: 10; /* Ensure it's above other elements */
+        }
+
+        .Social-button-container {
+            position: absolute;
+            top: 330px; /* Adjust top position as needed */
+            left: 1240px; /* Adjust left position as needed */
+            z-index: 10; /* Ensure it's above other elements */
+        }
+
+        .logo2 {
+           
+            /* Basic styling for the buttons */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif; /* Or your preferred font */
+            font-size: 32px;
+        }
+
+        .logo3 {
+            /* Adjust positioning as needed */
+        }
+    </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="parrot-container">
+      <div class="parrot"></div>
+  </div>
+
+      <nav>
+          <ul>
+              <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="Maps.html">Maps</a></li>
+              <li><a href="toprides.html">Top Rides</a></li>
+              <li><a href="Learn.html">LEARN MORE</a></li>
+          </ul>
+      </nav>
+  </header>
+  <div class="logo1">
+    <p>CLICK on Each cart to understand more on GRAPES</p>
+  </div>
+  <div class="logo2">
+    <p>GOLDEN_AGE</p>
+  </div>
+    <div class="geography-button-container">
+      <img onclick="geo()" src="/backGrounds/car-4957.gif" alt="logo" class="logo" >
+    </div>
+    <div class="religion-button-container">
+      <img onclick="rel()" src="/backGrounds/car-4957.gif" alt="logo" class="logo" >
+    </div>
+    <div class="achievements-button-container">
+      <img onclick="ach()" src="/backGrounds/car-4957.gif" alt="logo" class="logo" >
+    </div>
+    <div class="Politics-button-container">
+      <img onclick="pol()" src="/backGrounds/car-4957.gif" alt="logo" class="logo" >
+    </div>
+    <div class="Ecnomic-button-container">
+      <img onclick="ecn()" src="/backGrounds/car-4957.gif" alt="logo" class="logo" >
+    </div>
+    <div class="Social-button-container">
+      <img onclick="soc()" src="/backGrounds/car-4957.gif" alt="logo" class="logo" >
+    </div>
+    <img src="/backGrounds/rollerbg.png" alt="logo" class="bg-image">
+
+    <script>
+        function geo() {
+          alert("GEOGRAPHY : Centered around Ganges River Protected by Himalayas Mauryan Empire, the Guptas successfully reunited much of northern India under their rule");
+        }
+        function rel() {
+          alert("RELIGION : The major religions during the Mauryan Empire were BuddhismHinduism.");
+        }
+        function ach() {
+          alert("ACHIEVEMENTS: Golden Age of India (c. 320 to 600 CE) Astronomy - proved earth was round Math - modern numerals, concept of 0, decimal system Medicine - guidebooks and bone setting Textiles Literature (Ramayana - Hindu epic)");
+        }
+        function pol() {
+          alert("POLITICS: First emperor - Chandra Gupta");
+        }
+        function ecn() {
+          alert("ECNOMIC : Agriculture, trade, and commerce");
+        }
+        function soc() {
+          alert("SOCIAL : Caste system - people born into a class Supported (at time) by Hinduism, rejected by Buddhism");
+        }
+    </script>
+
+<audio id="backgroundMusic" autoplay loop>
+  <source src="backGrounds/music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</body>
+</html>

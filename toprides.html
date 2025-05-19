@@ -15,6 +15,28 @@
           align-items: center;
           min-height: 100vh;
         }
+        
+        
+        .parrot-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .parrot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-image: url('https://i.imgur.com/a/YOUR_PARROT_IMAGE.gif');  <===== REMOVE OR COMMENT THIS LINE */
+            background-image: url('https://www.animatedimages.org/data/media/591/animated-parrot-image-0128.gif');  /* <===== ADD THIS LINE (OR REPLACE WITH YOUR IMAGE URL) */
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: fly 1s infinite steps(12); /* Changed animation speed and steps to match the example GIF */
+        }
+
 
         .header {
           display: flex;
@@ -40,9 +62,9 @@
           border-radius: 50%;
           margin-right: 10px;
           background-color: #64CCC5;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          display: left;
+          justify-content: left;
+          align-items: left;
           font-size: 18px;
           font-weight: bold;
           color: #12182B;
@@ -130,7 +152,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: 48%;
+          width: 38%;
         }
 
         .text-middle-top {
@@ -341,40 +363,46 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo-container-header">
-            <div class="logo-header"></div>
-            <span class="logo-text">India - Top Rides</span>
-        </div>
+      <div class="parrot-container">
+        <div class="parrot"></div>
+    </div>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="Maps.html">Maps</a></li>
                 <li><a href="toprides.html">Top Rides</a></li>
-                <li><a href="#">Tickets</a></li>
+                <li><a href="Learn.html">LEARN MORE</a></li>
             </ul>
         </nav>
     </header>
-
+    
     <main class="rides-container">
         <div class="popup-layout-container">
             <h2 class="section-title">Path to Bhudism | Aarush</h2>
             <div class="image-pair-container">
                 <div class="image-left-top">
-                    <img src="BhuddasMuseum/bhudism spinwheel.png" alt="Ashoka's Wheel Ride" onclick="window.location.href='stw.html'">                    <p>Experience the grandeur of Ashoka's reign on this majestic Ferris wheel, adorned with the symbols of his empire. A gentle ride offering panoramic views.</p>
+                    <img src="BhuddasMuseum/bhudism spinwheel.png" alt="Ashoka's Wheel Ride" onclick="window.location.href='AarushRide.html' "> <p>Click to PLAY SPIN WHEEL <br><p>Budhism is an integral part of indian culture, Initially founded by sidharth guatham to attain inner peace. Explore the spin wheel to understand the GRAPES and its connection with the indian civilization...</p>
                 </div>
                 
               <div class="image-left-bottom">
-                <img src="BhuddasMuseum/bhudism museum.png"onclick="window.location.href='AarushMuseum.html' "><p>Experience the grandeur of Ashoka's reign on this majestic Ferris wheel, adorned with the symbols of his empire. A gentle ride offering panoramic views.</p>
-                <p>Explore the Heart of India: A Journey Through Its Rich Heritage and Vibrant Culture</p>
+                <img src="BhuddasMuseum/bhudism museum.png"onclick="window.location.href='AarushMuseum.html' "><p>VISIT THE MUSEUM and Shop <br>This is a mystical museum to achive and find inner peace. Come walk through the eight fold path of Budhism and purchase items that can help you achive inner peace.</p>
                 </div>
             </div>
         </div>
     </main>
 
 
+
+</a>
     <a href="toprides2.html"> <button class="swipe-button" style="right: calc(30px + 120px);"> <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/arrow-right.svg" alt="Swipe Right" class="swipe-icon">
             Next Page
         </button>
     </a>
+
+    <audio id="backgroundMusic" autoplay loop>
+      <source src="backGrounds/music.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
